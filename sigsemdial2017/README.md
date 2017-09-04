@@ -1,113 +1,107 @@
 # Notes from SIGDIAL/SemDIAL 2017
 
 
-## Papers
+## Oral Presentations
 
-### Keynote 1 (Oliver Lemon) Finding the goldilocks zone
-* data = porridge ?  what is just right?
-* naturalness
-	* process real spontaneous dialogue
-	* not too natural, with los of boring utterances
-* size
-	* learn real variations in human behavior
-	* data efficient systems
+### Keynote 1: Challenges for Data-driven Dialogue Systems: Finding the Goldilocks Zone for Conversational Data
+* Guiding question: What amount and type of data is "just right" for dialogue research?
+* Some data characteristic considerations:
+	* Naturalness
+		* Can we process real, spontaneous dialogue with all its disfluencies, interjections, cross-talk, irregular starting and stopping?
+		* Synthetic data is not too natural, with lots of boring utterances
+	* Size
+		* How much data do we need to learn real variations in human behavior?
+		* Very difficult to build huge-scale corpora so how can we build data-efficient systems?
 
-* natural/synthetic data
-	* train on synthetic, test on real data
-	* 100% on bAbI task 1
-	* bAbI small vocab, small interaction structures
-	* restarts, repairs, hesitations, fragments
-	* how well can such models handlge content-relevant natural dialogue phenomena
+* Studies in models trained on natural and synthetic data
+	* What can we expect if we train on synthetic but test on real data?
+	* What does it mean to get 100% on bAbI task 1 (issuing API appropriate calls)?
+	* Structure of bAbI: small vocab, small interaction structures
+	* What about restarts, repairs, hesitations, and fragments, which are typical phenomena in human dialogue?
+	* How well can such models handle content-relevant natural dialogue phenomena?
 	* need to learn targeted semantic updates
-	* babi+ dataset -- bit.ly/babi_plus
-	* 21% of user turns have a repair (compared to 40% in typical data)
-	* repair within single turn -- no long distance 
-	* performance goes from 100% -> 28%
-	* if trained on babi+ performance goes to 53%
-	* increase data: 100000 performance goes to 80.5%
+	* Present babi+ dataset (<bit.ly/babi_plus>), a synthetically-enhanced dataset
+		* 21% of user turns have a repair (compared to 40% in natural data)
+		* repair within single turn -- no long distance dependency
+	* Now model that achieves 100% performance on bAbI task 1 goes to 28% when tested on bAbI+
+	* if trained on babi+ performance goes to 53% when tested on bAbI+
+	* When data increased to 100000 (from 1000), performance goes to 80.5%
 
-* big data questions
-	* some natural phenomena are in long tail so need a lot of data
-	* why not use linguistic theories to handle more natural phenomena?
-	* generalize around small amounts of seed data
+* Big Data Questions
+	* Some natural phenomena are in long tail so need a lot of data to accurately 
+	* Why not use linguistic theories to handle more natural phenomena?
+	* We can then generalize around small amounts of seed data
 
-* data efficiency
-	* dynamic syntax and type theory with records
-	* how does memN2N compare to grammar-based models?
+* Data Efficiency
+	* Use dynamic syntax and type theory with records (ds-ttr)
+	* How does memN2N compare to grammar-based models?
 
-* handling variation
-	* dialogue grammar handles syntactic and interactional variation
-	* compute semantically equivalent dialogues
+* Handling Variation
+	* A provided dialogue grammar handles syntactic and interactional variation
+	* Then must compute semantically equivalent dialogues
 
-* ds-ttr dialogue model
-	* process word-by-word
-	* bidirectional: parse and generate in same model
-	* split utterances, fragments, ellipsis, self-other-repair
+* DS-TTR dialogue model
+	* Process word-by-word
+	* Bidirectional: parse and generate in same model
+	* Can handle split utterances, fragments, ellipsis, self-other-repair
+	* [Bootstrapping incremental dialogue systems from minimal data](https://arxiv.org/pdf/1612.00347)
+	* *How efficient is this processing?*
+	* Can ds-ttr parse babi+?
+		* accuracy of semantic parsing babi/babi+ both get 100%
 
-* burchak data
+* [Burchak Data](aclweb.org/anthology/W17-2001)
 
-* can ds-ttr parse babi+?
-	accuracy of semantic parsing babi/babi+ both get 100%
-
-* "bootstrapping incremental dialogue systems from minimal data"
-
-* BABBLE method
+* [BABBLE method](https://sites.google.com/site/hwinteractionlab/babble)
 	* parse seed dialogues
 	* MDP actions are words
-	* end-to-end systems
+	* end-to-end system
 	* leads to generalization (after starting with a seed dialogue)
 
 * Recap
-	* can ML methods capture structure dialogue variation?
-	* can if they have enough data
-	* use formal grammars/semantics
-	* not everything needs to be learned from data
-	* approach: combine reusable abstractions (e.g. grammars) with learning from data and learning from data
+	* Can ML methods capture structure dialogue variation?
+		* can if they have enough data
+	* Use formal grammars/semantics 
+	* Not everything needs to be learned from data
+	* Approach: combine reusable abstractions (e.g. grammars) with learning from data 
 
-* Alex challenge semi-finals
+* Alexa challenge semi-finals
+	* <https://developer.amazon.com/alexaprize>
+	* Systems deployed live periodically to interact with real US customers
 	* 200 ratings per day
-	* socialbots deployed to all US customers
-
-* Noisy and sparse user feedback signals
-	* some dialogues are over 100 turns long
-	* lots of ratings gathered
+	* Provided noisy and sparse user feedback signals
+		* Some dialogues are over 100 turns long
+		* Lots of ratings gathered
 
 * Big & Noisy bot data
 	* Reddit/Twitter/Movie subtitles, daytime TV transcripts
-	* often inappropriate 
+	* Often inappropriate as data sources
 
-* Approach
-	* Explicit rules to catch inappropriate situations
-	* Then allow statistical bots to do their work
-	* Train statistical bots on clean data (news)
-	* can never 100% avoid potentially offensive turns in context if using statistical bots
 
 * Heriot-Watt Alexa system
 	* Ensemble model
 		* rules, retrieval, seq2seq + ranker
 	* Features: 3 turns of context
 	* Maintain coherence
+	* Approach
+		* Explicit rules to catch inappropriate situations (blasphemy, calls for help, etc.)
+		* Then allow statistical bots to do their work
+		* Train statistical bots on clean data (news)
+		* can never 100% avoid potentially offensive turns in context if using statistical bots
 
-* Progress?
-	 * real user data/feedback
-	 * BUT WHAT ABOUT PLANS, CONSTRAINTS, NEGOTATION, REASONING
+* Has the dialogue community made progress?
+	* Abundance of data sources provide real user data/feedback
+	* **BUT WHAT ABOUT PLANS, CONSTRAINTS, NEGOTATION, REASONING?**
+	* Goal to achieve explainable AI
+		* Systems don't really know what they're talking about
 
-* Explainable AI
-	* systems don't really know what they're talking about
 
-
-### Talk after mine
-* Get slots and KB queries correct are required and hard
-	
+### [Generative Encoder-Decoder Models for Task-Oriented Spoken Dialog Systems with Chatting Capability](https://arxiv.org/abs/1706.08476)
+* Problem: Getting slots and KB queries completely correct is necessary but hard
 * Contributions
 	* tackle OOV and KB query problem
 	* domain-general dialog models
+	* Method adapted from delexicalization process
 
-* adapted from delexicalization process
-
-* type + index
-	* type: type of entity
-	* index
 
 * entity-index
 	* is not associated with entity value, but solely on order of appearance
@@ -115,18 +109,13 @@
 
 * Domain general model
 	* one example usage is out-of-domain handling
+	* Chat data for better out-of-domain recovery
 
-* Chat data for better OOD recovery
-	
-* Tic-toc chatbot data
+* Centralized dialogue service
+	* [Dialport](http://skylar.speech.cs.cmu.edu)
+	* delexicalization difficult for large datasets
 
-* http://skylar.speech.cs.cmu.edu
-
-* dialport
-
-* delexicalization difficult for large datasets
-
-### Sample-efficient Actor-Critic
+### [Sample-efficient Actor-Critic Reinforcement Learning with Supervised Data for Dialogue Management](https://arxiv.org/abs/1707.00130) 
 * Dialogue Policy
 	* RL
 		* learn policy online with real/simulated users
@@ -145,49 +134,44 @@
 
 ### SIGDIAL/SEMDIAL Joint Session on Negotiation Dialog
 
-* RASA
-
-* Online learning and transfer for user adaptation in dialogue systems
-
 * Automatic measures to calculate verbal alignment in human-agent interaction
-	* ARIA VALUSPA
 	* multimodal interaction
 	* adaptation
 	* communication accommodation theory
 	* interactive alignment theory
-
 	* studying verbal alignment
 		* speakers reuse lexical as well as syntactic structures from previous utterances
 
 	* take into account socio-emotional behavior of user -- "social glue"
 	* adaptation without the need of extensive user profiling
 	* automatic building of expression lexicon
-		* surface text attern that has been produced by both speakers in a dialogue
+		* surface text pattern that has been produced by both speakers in a dialogue
 
 
-# Keynote 2 - Empowering Human-Robot Dialogue by Affective Computing Research
+### Keynote 2: Empowering Human-Robot Dialogue by Affective Computing Research
 
-* nonverbal communication
-* enrich useful functions of computers to shape meaning of nonverbal behaviors
+* Question: How can we effectively study and use nonverbal communication
+	* allows us to enrich useful functions of computers to shape meaning of nonverbal behaviors
 
-## Recognition of social cues
-* speech, facial expressions, gaze, postures, body movements (social cues)
-* interpersonal attitudes, display of social engagement (interaction patterns)
+* Recognition of social cues
+	* speech, facial expressions, gaze, postures, body movements (social cues)
+	* interpersonal attitudes, display of social engagement (interaction patterns)
 
 * Facial features
-	* recognize and generate facial expressions
+	* Can we recognize and generate facial expressions?
 
 * Features for Vocal Emotion Recognition
 	
 * Non-Ekmanian Emotions
-	
+	* wish to move beyond only studying [Ekman's 6 universal emotions](https://people.ece.cornell.edu/land/OldStudentProjects/cs490-95to96/HJKIM/emotions.html)	
+
 * Accuracy drops with naturalness
 	* systems in lab conditions perform poorly in less controlled scenarios
 
-* Interactive Real-life applications
-	* Modalities need to be synchronized
+* Interactive Real-life Applications
+	* modalities need to be synchronized
 	* handling of noisy and corrupted data
-	* Processing in real-time
+	* processing in real-time
 
 * Contextualized Analysis
 	* Gender-specific information
@@ -195,9 +179,11 @@
 	* learning context using (B)LSTM
 
 * Multimodal Fusion
-	* natural interaction pepole draw on strategies to express emotion
+	* natural interaction people draw on strategies to express emotion
 
 * Event-based Fusion
+	* Take into account temporal relationships between channels and learn when to combine information
+	* Move from segmentation based process
 	
 * Synchronous Fusion
 	* characterized by consideration of multiple modalities within same time frame
@@ -205,43 +191,31 @@
 * Asynchronous Fusion
 	* refer to past time frames with help of some kind of memory support
 
-* Event-based fusion
-	* Take into account temporal relationships between channels and learn when to combine information
-	* Move from segmentation based process
-
-* SSI Framework
+* [Social Signal Interpretation Framework](https://hcm-lab.de/projects/ssi/)
 	* Open source framework for developing affective computing applications
 
-* Generating Social Cues by the Robot
-	
-* Nonverbal signals 
-	* expression emotional states
-	* express attitudes
+* Some considerations for affective interactions with robot
+	* Generating Social Cues by the Robot
+	* Nonverbal signals 
+		* expression emotional states
+		* express attitudes
+	* Expression of Action Tendencies
+		* Action tendencies for NAO used body movement, posture, eye color and sound
+	* Generation of Facial Expressions
+		* Facial Action Coding System -- used to generate and recognize facial expressions
+	* Empathic Listener
+		* Perception -> Understanding -> Internal reaction -> External Reaction -> Reaction
+	* Measurement of Engagement between Human + Robot
+	* Gaze-based Interaction important for
+		* Object grounding
+		* Social Grounding
+		* Turn management
 
-* Expression of Action Tendencies
-	* Action tendencies for NAO used body movement, posture, eye color and sound
-
-* Generation of Facial Expressions
-	* FACS -- used to generate and recognize facial expressions
-
-* Empathic Listener
-	* Perception -> Understanding -> Internal reaction -> External Reaction -> Reaction
-
-* Measurement of Engagement between Human + Robot
-
-* Mutual + Directed Gaze
-
-* Gaze-based Interaction
-	* Object grounding
-	* Social Grounding
-	* Turn management
-
-* Automated Interruption Detection
 	
 
-# Turn-taking in Dialogue
-* turn-taking is context-dependent
 
+### [Towards a General, Continuous Model of Turn-taking in Spoken Dialogue using LSTM Recurrent Neural Networks ](www.sigdial.org/workshops/conference18/proceedings/pdf/SIGDIAL27.pdf)
+* Observation: turn-taking is context-dependent
 * Towards a Model that is
 	* General
 	* Continuous
@@ -255,109 +229,84 @@
 	* spectral stability
 	* POS (audio?)
 
-# Attentive Listening System with Backchanneling, response generation
 
-* Attentive listening
+### [Attentive listening system with backchanneling, response generation and flexible turn-taking](www.sigdial.org/workshops/conference18/proceedings/pdf/SIGDIAL16.pdf) 
+
+* Examples of attentive listening
 	* short interjections to stimulate more conversation
 
 * Backchanelling
 	* prediction of backchannel timing and form
-	* counseling corpus used to train models because of many examnples of attentive listening
+	* counseling corpus used to train models because of many examples of attentive listening
 
 * Subjective Experiment 
-	* naturalness
-	* tempo
-	* empathy
-	* understanding
-	* willingness to talk again
- 	* correct timing is more important than correct form
+	* Metrics
+		* naturalness
+		* tempo
+		* empathy
+		* understanding
+		* willingness to talk again
+	 	* correct timing is more important than correct form
 
 * Statement response generation
  	* generate responses based on focus words extracted from speech of user
 
-* Turn-taking
 
-# Perceptual grounding as interaction
-
-* Connect language, perception, and action
-
-* Grounding
- 	* feature selection is dynamic, dependent on feature richness of perceptual scene
- 	* task that an agent is engaged with
-
-* Spatial Descriptions
-
-* Scene geometry and spatial templates
-
-* Effect of context on grounding
- 	* does perceptual context affect grounding of descriptions in spatial templates
- 	* what happens with in compositional phrases
-
-* http://www.dobnik.net/simon/semantic-o-matic
-
-
-# Challenging Neural Dialogue Models with Natural Data
-
-* incrementality, data-efficiency
-
-* incremental phenomena appear without respecting boundaries of a turn or a sentence
-
-* are dialogue systems ready for real-world data
-	* word-by-word incremental processing
-	* disfluencies
-
-	* domain specific data is expensive
-
-* restarts, corrections, hesitations
-
-* error analysis? which mix-ins are most problematic?
-
-* why train accuracy so low?
-
-* impractically large datasets
-*  closeness between train & test sets not guaranteed
-
-* computational models of dialogue processing as source of bias/prior
-
-* more modularity in DL architectures informed by these
-
-* dynamic syntax and type theory with records
-
-* how slow?
-
-
-# E2E dataset
-
-* so far limited to small delexicalized datasets
-* more challenging -- more sentences per one MR,
+### [The E2E Dataset: New Challenges For End-to-End Generation](https://arxiv.org/abs/1706.09254)
+* Problem: So far NLG limited to small delexicalized datasets
+* This dataset is more challenging -- more sentences per one MR,
 * longer sentences
-* collected by crowdsourcing 
 
-# Modelling Protagonist Goals ...
-* Goal
-	* infer from context whether desired fulfilled or not
 
+### [Modelling Protagonist Goals and Desires in First-Person Narrative](https://arxiv.org/abs/1708.09040)
+* Goal: infer from context whether desired fulfilled or not
 * Contributions
-	* https://nlds.soe.ucsc.educ/DesireDB
+	* https://nlds.soe.ucsc.edu/DesireDB
 
 
-# Role of Conversation Context for Sarcasm Detection
-* Isn't all sarcasm context dependent?
+### [The Role of Conversation Context for Sarcasm Detection in Online Interactions](https://arxiv.org/abs/1707.06226)
+	* Use Twitter exchanges to assess sarcasm present
+	* Investigate a variety of LSTM networks (with attention) to incorporate sentence-level attention on context and response
+	* attention weights indicate
+		* semantic coherence between context and reply
+		* incongruity between context and reply
+		* able to pick up on certain word/phrase-level sarcasm markers
 
-# ...
-* lexical acquisition through implicit confirmation
-* trying to acquire ontological categories of unknown terms through implicit confirmation
 
-# Role of Natural Language Understanding in Chatbots
-* Microsoft LUIS
-* IBM Watson Conversation
-* API.ai
-* wit.ai -- batch import not working for external data
-* Amazon lex -- no batch import
-* RASA
+### [Evaluating Natural Language Understanding Services for Conversational Question Answering Systems](www.sigdial.org/workshops/conference18/proceedings/pdf/SIGDIAL22.pdf)
+	* Microsoft LUIS
+	* IBM Watson Conversation
+	* API.ai
+	* wit.ai -- batch import not working for external data
+	* Amazon lex -- no batch import
+	* RASA
+	* Results
+		* LUIS on top, RASA in 2nd place
+	* github.com/sebischair/NLU-Evaluation-Corpora 
 
-* sebischair/NLU-Evaluation-Corpora (github)
+
+
+### Demos
+	* Dialport 
+		* https://skylar.speech.cs.cmu.edu/master/PortalSite/about.html
+		* centralized platform for interacting with variety of dialogue models
+		* <https://arxiv.org/abs/1606.02562>
+		* great idea and about time someone did this!
+	* Demonstration of interactive teaching for end-to-end dialog control with hybrid code networks
+		* training dialogue agents using hybrid code networks + interactive learning paradigm
+		* train from a few supervised datasets
+		* very similar to wit.ai
+		* great UI provided and I think this paradigm can help build dialogue agents from scratch that can probably handle 70-80% of basic dialogue stories
+
+### Panel/Discussion for Special Session on Natural Language Generation for Dialogue Systems 
+	* Purely black box end2end systems will never fly in a corporate setting because someone has to explain wth is going on to a superior
+	* Models that can handle longer term context still very elusive (3+ turns)
+	* One-shot learning and other data-efficient methods important -- annotated data often lacking
+	* clean data also often lacking which limits achievable quality of models
+	* Improvement from 2000 is ASR and large KBs
+	* Likert scales are pretty bad
+	* Inadequacy of evaluation metrics is ok for now since it's still early days
+		* I personally don't agree with this point; I think it's never premature to know whether what you're doing is off the mark
+
 
 ## Themes
-
-* LUIS (Microsoft)
