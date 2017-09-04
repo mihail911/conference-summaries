@@ -1,6 +1,3 @@
-# Notes from SIGDIAL/SemDIAL 2017
-
-
 ## Oral Presentations
 
 ### Keynote 1: Challenges for Data-driven Dialogue Systems: Finding the Goldilocks Zone for Conversational Data
