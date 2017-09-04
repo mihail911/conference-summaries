@@ -265,48 +265,45 @@
 
 
 ### [The Role of Conversation Context for Sarcasm Detection in Online Interactions](https://arxiv.org/abs/1707.06226)
-	* Use Twitter exchanges to assess sarcasm present
-	* Investigate a variety of LSTM networks (with attention) to incorporate sentence-level attention on context and response
-	* attention weights indicate
-		* semantic coherence between context and reply
-		* incongruity between context and reply
-		* able to pick up on certain word/phrase-level sarcasm markers
+* Use Twitter exchanges to assess sarcasm present
+* Investigate a variety of LSTM networks (with attention) to incorporate sentence-level attention on context and response
+* attention weights indicate
+	* semantic coherence between context and reply
+	* incongruity between context and reply
+	* able to pick up on certain word/phrase-level sarcasm markers
 
 
 ### [Evaluating Natural Language Understanding Services for Conversational Question Answering Systems](www.sigdial.org/workshops/conference18/proceedings/pdf/SIGDIAL22.pdf)
-	* Microsoft LUIS
-	* IBM Watson Conversation
-	* API.ai
-	* wit.ai -- batch import not working for external data
-	* Amazon lex -- no batch import
-	* RASA
-	* Results
-		* LUIS on top, RASA in 2nd place
-	* github.com/sebischair/NLU-Evaluation-Corpora 
+* Microsoft LUIS
+* IBM Watson Conversation
+* API.ai
+* wit.ai -- batch import not working for external data
+* Amazon lex -- no batch import
+* RASA
+* Results
+	* LUIS on top, RASA in 2nd place
+* github.com/sebischair/NLU-Evaluation-Corpora 
 
 
 
 ### Demos
-	* Dialport 
-		* https://skylar.speech.cs.cmu.edu/master/PortalSite/about.html
-		* centralized platform for interacting with variety of dialogue models
-		* <https://arxiv.org/abs/1606.02562>
-		* great idea and about time someone did this!
-	* Demonstration of interactive teaching for end-to-end dialog control with hybrid code networks
-		* training dialogue agents using hybrid code networks + interactive learning paradigm
-		* train from a few supervised datasets
-		* very similar to wit.ai
-		* great UI provided and I think this paradigm can help build dialogue agents from scratch that can probably handle 70-80% of basic dialogue stories
+* Dialport 
+	* https://skylar.speech.cs.cmu.edu/master/PortalSite/about.html
+	* centralized platform for interacting with variety of dialogue models
+	* <https://arxiv.org/abs/1606.02562>
+	* great idea and about time someone did this!
+* Demonstration of interactive teaching for end-to-end dialog control with hybrid code networks
+	* training dialogue agents using hybrid code networks + interactive learning paradigm
+	* train from a few supervised datasets
+	* very similar to wit.ai
+	* great UI provided and I think this paradigm can help build dialogue agents from scratch that can probably handle 70-80% of basic dialogue stories
 
 ### Panel/Discussion for Special Session on Natural Language Generation for Dialogue Systems 
-	* Purely black box end2end systems will never fly in a corporate setting because someone has to explain wth is going on to a superior
-	* Models that can handle longer term context still very elusive (3+ turns)
-	* One-shot learning and other data-efficient methods important -- annotated data often lacking
-	* clean data also often lacking which limits achievable quality of models
-	* Improvement from 2000 is ASR and large KBs
-	* Likert scales are pretty bad
-	* Inadequacy of evaluation metrics is ok for now since it's still early days
-		* I personally don't agree with this point; I think it's never premature to know whether what you're doing is off the mark
-
-
-## Themes
+* Purely black box end2end systems will never fly in a corporate setting because someone has to explain wth is going on to a superior
+* Models that can handle longer term context still very elusive (3+ turns)
+* One-shot learning and other data-efficient methods important -- annotated data often lacking
+* clean data also often lacking which limits achievable quality of models
+* Improvement from 2000 is ASR and large KBs
+* Likert scales are pretty bad
+* Inadequacy of evaluation metrics is ok for now since it's still early days
+	* I personally don't agree with this point; I think it's never premature to know whether what you're doing is off the mark
